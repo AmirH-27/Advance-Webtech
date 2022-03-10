@@ -15,7 +15,6 @@
             <td>{{$user->email}}</td>
             <td><a href="/editUser/{{$user->id}}">Edit</a></td>
             <td><a href="/deleteUser/{{$user->id}}">Delete</a></td>
-
         </tr>
         @endforeach
 @endsection

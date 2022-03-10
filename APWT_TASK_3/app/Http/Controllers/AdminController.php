@@ -66,4 +66,31 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route('listAdmin');
     }
+    public function addUser(){
+        return view('PagesAdmin.addUser');
+    }
+    public function addUserSubmit(Request $request){
+        $validate = $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'id' => 'required',
+            'email' => 'email'
+        ],
+        [
+            'name.required'=>'Enter Your Name',
+            'password.required'=>'Enter Your Password'
+        ]
+    );
+        $user = new Users();
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->user_id = $request->id;
+        $user->dob = $request->dob;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->type = "user";
+        $user->save();
+
+        return $this->list();
+    }
 }
