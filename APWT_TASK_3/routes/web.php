@@ -21,11 +21,12 @@ Route::get('/', function () {
     return view('Pages.Login');
 });
 //----------------------------Admin----------------------------//
-Route::get('/homeAdmin', [AdminController::class, 'index'])->name('homeAdmin');
+Route::get('/home/Admin', [AdminController::class, 'index'])->name('homeAdmin');
 Route::get('/profileAdmin', [AdminController::class, 'profile'])->name('profileAdmin')->middleware('ValidAdmin');
 Route::post('/profileAdmin', [AdminController::class, 'profileEdit'])->name('profileAdminEdit');
-Route::get('/admin/list', [AdminController::class, 'list'])->name('listAdmin');
+Route::get('/admin/list', [AdminController::class, 'list'])->name('listAdmin')->middleware('ValidAdmin');
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+
 Route::get('/addUser', [AdminController::class, 'addUser'])->name('addUser');
 Route::post('/addUser', [AdminController::class, 'addUserSubmit'])->name('addUser');
 Route::get('/editUser/{id}', [AdminController::class, 'editUser']);
@@ -34,7 +35,7 @@ Route::get('/deleteUser/{id}', [AdminController::class, 'deleteUser']);
 Route::post('/deleteUser', [AdminController::class, 'deleteUserSubmit'])->name('deleteUser');
 
 //----------------------------User----------------------------//
-Route::get('/home', [UserController::class, 'index'])->name('homeUser');
+Route::get('/home/User', [UserController::class, 'index'])->name('homeUser');
 Route::get('/team', [UserController::class, 'team'])->name('teamUser')->middleware('ValidUser');
 Route::get('/profile', [UserController::class, 'profile'])->name('profileUser')->middleware('ValidUser');
 Route::post('/profileAdmin', [UserController::class, 'profileEdit'])->name('profileUserEdit');

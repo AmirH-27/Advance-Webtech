@@ -25,11 +25,11 @@ class LoginController extends Controller
 
         if($user && $user->type == "admin"){
             $request->session()->put('user', $user->id);
-            return view('PagesAdmin.homeAdmin');
+            return redirect()->route('homeAdmin');
         }
         elseif($user && $user->type == "user"){
             $request->session()->put('user', $user->id);
-            return view('PagesUser.homeUser');
+            return redirect()->route('homeUser');
         }
         else{
             return "User name and Password do not match";
