@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\AdWt\APWT_TASK_3\resources\views/PagesUser/profile.blade.php ENDPATH**/ ?>
